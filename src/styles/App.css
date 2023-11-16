@@ -1,1 +1,22 @@
-
+.table-heading{
+    background-color: black;
+    color:white;
+}
+td{
+    margin-right:2rem;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button{
+    width:13vw;
+    height:5vh;
+    background-color: aqua;
+    color:white;
+}
+table{
+    margin-left:10vw;
+    
+}
