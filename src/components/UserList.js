@@ -3,11 +3,13 @@ import axios from 'axios';
 
 function UserList(){
   const [users, setUsers] = useState([]);
+  const[displaylist , setdisplaylist]=useState(false);
   
   function fetchUsers(){
     try {
       const response = axios.get('https://reqres.in/api/users')
       .then((response1)=> setUsers(response1.data.data))
+      setdisplaylist(true)
      
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -28,19 +30,30 @@ function UserList(){
   }
 
   function renderTableData(){
-    return users.map(user => (
-      <tr key={user.id}>
-       
-       
-        <td>{user.first_name}</td>
-        <td>{user.last_name}</td>
-        <td>{user.email}</td>
-        <td>
-          <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
-        </td>
-      </tr>
-    ));
-  }
+  
+      if(displaylist){
+        return(
+        users.map(user => (
+          <tr key={user.id}>
+           
+           
+            <td>{user.first_name}</td>
+            <td>{user.last_name}</td>
+            <td>{user.email}</td>
+            <td>
+              <img src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
+            </td>
+          </tr>
+        ));
+        )
+      
+      }
+      else{
+        return "No data found";
+      }
+      
+    
+}
 
 
 
